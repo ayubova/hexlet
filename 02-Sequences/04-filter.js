@@ -3,17 +3,18 @@ import { make, append, node, value, is, toString as htmlToString, map } from 'he
 
 // BEGIN (write your solution here)
 export const filter = (func, elements) => {
-  const iter = (item, acc) => {
-    if (isEmpty(item)) {
-      return reverse(acc);
-    };
-    if (func(head(item))) {
-      return iter(tail(item), cons(head(item), acc));
-    }
-    else return iter(tail(item), acc);
-  };
-  return iter(elements, l());
-};
+  const iter = (items, acc) => {
+if (isEmpty(items)) {
+  return reverse(acc);
+}
+if (func(head(items))) {
+   return iter(tail(items), cons(head(items), acc));
+   }
+return iter(tail(items), acc);
+ };
+ return iter(elements, l());
+ };
+  
 
 export const quotes = (elements) => {
   const filteredElements = filter(element => is('blockquote', element), elements);
