@@ -4,7 +4,9 @@ import { make, append, node, value, is, toString as htmlToString, map } from 'he
 // BEGIN (write your solution here)
 export const filter = (func, elements) => {
   const iter = (item, acc) => {
-    if (isEmpty(item)) return reverse(acc);
+    if (isEmpty(item)) {
+      return reverse(acc);
+    };
     if (func(head(item))) {
       return iter(tail(item), cons(head(item), acc));
     }
