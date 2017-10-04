@@ -27,6 +27,7 @@ PairedTag.prototype.toString = function toString() {
 };
 
 export default PairedTag;
+
 // END
 
 // SingleTag
