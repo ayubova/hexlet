@@ -1,12 +1,12 @@
 import { sep } from 'path';
 
 const findFilesByName = (root, substr) => {
-  const iter = (n, ancestry, acc) => {
+  const iter = (n, path, acc) => {
     if (n.type === 'file') {
-      return n.name.includes(substr) ? [...acc, [ancestry, n.name].join(sep)] : acc;
+        return n.name.includes(substr) ? [...acc, `${path}${sep}${n.name}`] : acc;
     }
-    const newAncestry = n.name === '/' ? '' : [ancestry, n.name].join(sep);
-    return n.children.reduce((cAcc, nn) => iter(nn, newAncestry, cAcc), acc);
+    const newPath = n.name === '/' ? '' : `${path}${sep}${n.name}`;
+    return n.children.reduce((cAcc, nn) => iter(nn, newPath, cAcc), acc);
   };
 
   return iter(root, '', []);
